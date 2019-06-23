@@ -83,7 +83,7 @@ void printArray(int *array, int size)
 int main()
 {
     printf("***START***\n");
-    int toBeSorted[] = {15, 4, 8, 26, 32, 27, 51, 72, 78, 21, 2, 8, 23}; //{7, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2};
+    int toBeSorted[] = {7, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2}; //{15, 4, 8, 26, 32, 27, 51, 72, 78, 21, 2, 8, 23};
     int size = sizeof(toBeSorted) / sizeof(int);
     
     printf("Given array: ");
