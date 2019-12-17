@@ -2,14 +2,15 @@
 
 int findMax(int *array, int size);
 int findMin(int *array, int size);
+int * countingSort(int *input, int *output, int k, int size);
+void printArray(int *array, int size);
 
 /**
  * 
 */
-int * countingSort(int *input, int k, int size)
+int * countingSort(int *input, int *output, int k, int size)
 {
     int counter[k + 1];
-    int output[size];
 
     for (int i = 0; i <= k; i++)
     {
@@ -33,8 +34,7 @@ int * countingSort(int *input, int k, int size)
         counter[input[j]] -=  1;
     }
 
-    int * result = output;
-    return result;
+    return output;
 }
 
 /**
@@ -55,22 +55,6 @@ int findMax(int *array, int size)
 
 /**
  * 
- */
-int findMin(int *array, int size)
-{
-    int min = array[0];
-    for (int i = 0; i < size; i++)
-    {
-        if (array[i] < min)
-        {
-            min = array[i];
-        }
-    }
-    return min;
-}
-
-/**
- * 
 */
 void printArray(int *array, int size)
 {
@@ -84,7 +68,8 @@ int main()
 {
     printf("***START***\n");
     int toBeSorted[] = {7, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2}; //{15, 4, 8, 26, 32, 27, 51, 72, 78, 21, 2, 8, 23};
-    int size = sizeof(toBeSorted) / sizeof(int);
+    int size = (int) (sizeof(toBeSorted) / sizeof(int));
+    int output[size];
     
     printf("Given array: ");
     printArray(toBeSorted, size);
@@ -92,13 +77,9 @@ int main()
     printf("\n");
     
     int maxValue = findMax(toBeSorted, size);
-    int minValue = findMin(toBeSorted, size);
-    int * result = countingSort(toBeSorted, maxValue, size);
+    int * result;
+    result = countingSort(toBeSorted, output, maxValue, size);
     
-    result[size - 1] = maxValue;
-    result[0] = minValue;
-
-
     printf("Sorted array: ");
 
     printArray(result, size);
